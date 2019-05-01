@@ -13,10 +13,9 @@ The MIT License (MIT)
 
 #include "ATM90E32.h"
 
-ATM90E32::ATM90E32(int pin, unsigned short lgain, unsigned short ugain, unsigned short igainA, unsigned short igainC) 	// Object
+ATM90E32::ATM90E32(int pin, unsigned short ugain, unsigned short igainA, unsigned short igainC) 	// Object
 {
 	_cs = pin; 	// SS PIN
-	_lgain = lgain; //0x1D39 Line calibration gain
 	_ugain = ugain; //0x7EAC voltage rms gain
 	_igainA = igainA; //0xB5CB Current gain CT1
 	_igainC = igainC; //0xB5CB Current gain CT2
@@ -460,7 +459,7 @@ void ATM90E32::begin()
   CommEnergyIC(WRITE, PLconstH, 0x0861);    // PL Constant MSB (default)
   CommEnergyIC(WRITE, PLconstL, 0xC468);    // PL Constant LSB (default)
   CommEnergyIC(WRITE, MMode0, 0x1185);      // Mode Config (60 Hz, 3P3W, phase B not counted)
-  CommEnergyIC(WRITE, MMode1, 0x5555);      // PGA Gain Config - 0x5555 (x2) // 0x0000 (1x)
+  CommEnergyIC(WRITE, MMode1, 0x0015);      // PGA Gain Config - 0x002A (x4) // 0x0015 (x2) // 0x0000 (1x)
   CommEnergyIC(WRITE, PStartTh, 0x0AFC);    // Active Startup Power Threshold - 50% of startup current = 0.9/0.00032 = 2812.5
   CommEnergyIC(WRITE, QStartTh, 0x0AEC);    // Reactive Startup Power Threshold
   CommEnergyIC(WRITE, SStartTh, 0x0000);    // Apparent Startup Power Threshold
@@ -469,11 +468,11 @@ void ATM90E32::begin()
   CommEnergyIC(WRITE, SPhaseTh, 0x0000);    // Apparent  Phase Threshold
   
   //Set metering calibration values (CALIBRATION)
-  CommEnergyIC(WRITE, GainA, _lgain);       // Line calibration gain
+  CommEnergyIC(WRITE, PQGainA, 0x0000);     // Phase A calibration gain
   CommEnergyIC(WRITE, PhiA, 0x0000);        // Line calibration angle
-  CommEnergyIC(WRITE, GainB, 0x0000);       // Line calibration gain
+  CommEnergyIC(WRITE, PQGainB, 0x0000);     // Phase B calibration gain
   CommEnergyIC(WRITE, PhiB, 0x0000);        // Line calibration angle
-  CommEnergyIC(WRITE, GainC, _lgain);       // Line calibration gain
+  CommEnergyIC(WRITE, PQGainC, 0x0000);     // Phase C calibration gain
   CommEnergyIC(WRITE, PhiC, 0x0000);        // Line calibration angle
   CommEnergyIC(WRITE, PoffsetA, 0x0000);    // A line active power offset
   CommEnergyIC(WRITE, QoffsetA, 0x0000);    // A line reactive power offset

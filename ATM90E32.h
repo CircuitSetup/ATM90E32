@@ -84,11 +84,11 @@ The MIT License (MIT)
 #define QoffsetB 0x44 		// B Line Power Offset (Q)
 #define PoffsetC 0x45 		// C Line Power Offset (P)
 #define QoffsetC 0x46 		// C Line Power Offset (Q)
-#define GainA 0x47 			// A Line Calibration Gain
+#define PQGainA 0x47 		// Phase A Calibration Gain
 #define PhiA 0x48  			// A Line Calibration Angle
-#define GainB 0x49 			// B Line Calibration Gain
+#define PQGainB 0x49 		// Phase B Calibration Gain
 #define PhiB 0x4A  			// B Line Calibration Angle
-#define GainC 0x4B 			// C Line Calibration Gain
+#define PQGainC 0x4B 		// Phase C Calibration Gain
 #define PhiC 0x4C  			// C Line Calibration Angle
 
 /* HARMONIC & ENERGY REGISTERS */
@@ -246,7 +246,7 @@ class ATM90E32
 		unsigned short _igainA;
 		unsigned short _igainC;
 	public:
-		ATM90E32(int pin, unsigned short lgain, unsigned short ugain, unsigned short igainA, unsigned short igainC);
+		ATM90E32(int pin, unsigned short ugain, unsigned short igainA, unsigned short igainC);
 
 		/* Initialization Functions */	
 		void begin();
