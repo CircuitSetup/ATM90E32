@@ -116,7 +116,6 @@ int ATM90E32::Read32Register(signed short regh_addr, signed short regl_addr) {
   int val, val_h, val_l;
   val_h = CommEnergyIC(READ, regh_addr, 0xFFFF);
   val_l = CommEnergyIC(READ, regl_addr, 0xFFFF);
-  val = CommEnergyIC(READ, regh_addr, 0xFFFF);
 
   val = val_h << 16;
   val |= val_l; //concatenate the 2 registers to make 1 32 bit number
@@ -132,7 +131,6 @@ double ATM90E32::CalculateVIOffset(unsigned short regh_addr, unsigned short regl
   uint16_t offset;
   val_h = CommEnergyIC(READ, regh_addr, 0xFFFF);
   val_l = CommEnergyIC(READ, regl_addr, 0xFFFF);
-  val = CommEnergyIC(READ, regh_addr, 0xFFFF);
 
   val = val_h << 16; //move high register up 16 bits
   val |= val_l; //concatenate the 2 registers to make 1 32 bit number
@@ -152,7 +150,6 @@ double ATM90E32::CalculatePowerOffset(unsigned short regh_addr, unsigned short r
   uint16_t offset;
   val_h = CommEnergyIC(READ, regh_addr, 0xFFFF);
   val_l = CommEnergyIC(READ, regl_addr, 0xFFFF);
-  val = CommEnergyIC(READ, regh_addr, 0xFFFF);
 
   val = val_h << 16; //move high register up 16 bits
   val |= val_l; //concatenate the 2 registers to make 1 32 bit number
