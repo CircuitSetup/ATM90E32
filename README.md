@@ -148,10 +148,6 @@ Legacy helpers are still present:
 
 On ESP32, the run/clear calibration methods save and restore calibration values with `Preferences`, keyed by the chip-select pin. On non-ESP32 Arduino targets, the same methods apply calibration values to the ATM90E32 for the current boot only.
 
-## Example
-
-See [examples/ESPHomeParityDemo/ESPHomeParityDemo.ino](examples/ESPHomeParityDemo/ESPHomeParityDemo.ino) for a full config-based sketch with serial-triggered calibration commands and status output.
-
 ## Raw Register Access
 
 Any ATM90E32 register defined in `ATM90E32.h` can still be read directly:
