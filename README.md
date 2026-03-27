@@ -1,6 +1,6 @@
 # ATM90E32 Arduino Library
 
-Arduino library for energy meters built around the Microchip ATM90E32AS. It powers CircuitSetup split-phase and expandable energy meter boards and now includes an ESPHome-parity API for config-driven setup, per-phase energy counters, calibration helpers, and decoded status reporting.
+This library powers the [CircuitSetup Split Single Phase Energy Meter](https://github.com/CircuitSetup/Split-Single-Phase-Energy-Meter) and the [6 Channel Expandable Energy Meter](https://github.com/CircuitSetup/Expandable-6-Channel-ESP32-Energy-Meter). 
 
 ## Highlights
 
